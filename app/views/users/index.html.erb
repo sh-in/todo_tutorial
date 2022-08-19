@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Users</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <table class="table">
+      <tr>
+        <td>
+          <%= render user %>
+        </td>
+        <td>
+          <%= link_to "Show this user", user %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+
+<%= link_to "New user", new_user_path, class: "btn btn-outline-primary" %>
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h5 class="card-title">Primary card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>

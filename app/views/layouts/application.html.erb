@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TodoTutorial</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body>
+    <% if !User.find_by(id: session[:user_id]).nil? %>
+      <p>logged in as <%= User.find_by(id: session[:user_id]).name %></p>
+      <%= button_to "Logout", logout_path, method: :delete %>
+    <% else %>
+      <p>not logged in</p>
+      <%= button_to "Login", login_path %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
