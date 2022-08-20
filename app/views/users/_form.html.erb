@@ -1,32 +1,46 @@
-<%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="container text-center" style="width: 40%;">
+  <%= form_with(model: user) do |form| %>
+    <div class="card text-center shadow p-3">
+      <% if user.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+          <ul>
+            <% user.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="card-body">
+        <h1 class="card-title mb-3">Sing Up</h1>
+
+        <div class="row mb-3">
+          <div class="col">
+            <%= form.text_field :name, class: "form-control", placeholder: "User name" %>
+          </div>
+        </div>
+          
+        <div class="row mb-3">
+          <div class="col">
+            <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Password confirmation" %>
+          </div>
+        </div>
+
+        <div class="d-grid mb-3">
+          <%= form.submit "Sign Up", class: "btn btn-info" %>
+        </div>
+
+        <div class="d-grid">
+          <%= link_to "ログインはこちらから", login_path, class: "btn btn-outline-primary" %>
+        </div>
+      </div>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div>
-    <%= form.label :password_confirmation, style: "display: block" %>
-    <%= form.password_field :password_confirmation %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
